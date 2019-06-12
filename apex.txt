@@ -1,0 +1,31 @@
+clase apex
+
+//se declara la clase superior con un nombre que identifique el objeto
+public with sharing class SimuladorPDFController {
+      public String simuladorId {get;set;}
+
+//se declara una sub clase donde declaras al objeto >> Nombre de la API y un nombre corto 
+public Simulador_Express__c simulador{get;set;}
+
+
+//sub_clase para generar las consultas de tu objeto   
+public SimuladorPDFController(ApexPages.StandardController stdController){
+    
+    
+    //se obtiene el id de la pagina actual y se manda a una varibale para posteriormente comparar el regitro de la misma
+    Simulador_Express__c simulado= (Simulador_Express__c )stdController.getRecord();          
+    simuladorid = simulado.Id;
+
+//consulta de tu objeto 
+  simulador= [SELECT Id, Name
+              FROM Simulador_Express__c
+              WHERE Id =: simuladorid
+              ];
+   
+  
+}
+
+}
+
+
+
